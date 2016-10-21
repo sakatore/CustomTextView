@@ -14,6 +14,7 @@
 		7F429C2F1DB0D19E00DE8ED5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F429C2D1DB0D19E00DE8ED5 /* LaunchScreen.storyboard */; };
 		7F429C3A1DB0D19E00DE8ED5 /* CustomTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F429C391DB0D19E00DE8ED5 /* CustomTextViewTests.swift */; };
 		7F429C451DB0D19E00DE8ED5 /* CustomTextViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F429C441DB0D19E00DE8ED5 /* CustomTextViewUITests.swift */; };
+		7F8195C41DBA4BE80046B9B4 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8195C31DBA4BE80046B9B4 /* CustomTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		7F429C401DB0D19E00DE8ED5 /* CustomTextViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CustomTextViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F429C441DB0D19E00DE8ED5 /* CustomTextViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextViewUITests.swift; sourceTree = "<group>"; };
 		7F429C461DB0D19E00DE8ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F8195C31DBA4BE80046B9B4 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				7F429C241DB0D19E00DE8ED5 /* AppDelegate.swift */,
 				7F429C261DB0D19E00DE8ED5 /* ViewController.swift */,
+				7F8195C31DBA4BE80046B9B4 /* CustomTextView.swift */,
 				7F429C281DB0D19E00DE8ED5 /* Main.storyboard */,
 				7F429C2B1DB0D19E00DE8ED5 /* Assets.xcassets */,
 				7F429C2D1DB0D19E00DE8ED5 /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				7F429C271DB0D19E00DE8ED5 /* ViewController.swift in Sources */,
 				7F429C251DB0D19E00DE8ED5 /* AppDelegate.swift in Sources */,
+				7F8195C41DBA4BE80046B9B4 /* CustomTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +516,7 @@
 				7F429C4B1DB0D19E00DE8ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F429C4C1DB0D19E00DE8ED5 /* Build configuration list for PBXNativeTarget "CustomTextViewTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +525,7 @@
 				7F429C4E1DB0D19E00DE8ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F429C4F1DB0D19E00DE8ED5 /* Build configuration list for PBXNativeTarget "CustomTextViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +534,7 @@
 				7F429C511DB0D19E00DE8ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

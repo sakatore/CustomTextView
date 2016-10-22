@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var textView: CustomTextView = CustomTextView()
-    var textField: UITextField = UITextField()
+    var textView = CustomTextView()
+    var textField = UITextField()
     
     var width: CGFloat = 200
     var textViewHeight: CGFloat = 100
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
         
         self.view.addSubview(textField)
     }

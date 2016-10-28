@@ -13,10 +13,10 @@ class ViewController: UIViewController {
     var textView = CustomTextView()
     var textField = UITextField()
     
-    var width: CGFloat = 200
-    var textViewHeight: CGFloat = 100
-    var textFieldhHeight: CGFloat = 50
-    var buttonHeight: CGFloat = 50
+    let width: CGFloat = 200
+    let textViewHeight: CGFloat = 100
+    let textFieldhHeight: CGFloat = 50
+    let buttonHeight: CGFloat = 50
     var posX: CGFloat { return self.view.frame.width / 2}
     
     
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     }
     
     func textFieldTextDidChanged(_ notification: NSNotification) {
-        print("UITextFieldTextDidChange!")
+        print("Notification->UITextFieldTextDidChange!")
     }
     
     func configButton() {
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
     func tapButton(_ sender: UIButton) {
         print("TapButton!")
         textView.text = textView.text + "+addText"
-        //        textView.textAlignment = .center
+//        textView.textAlignment = .center
         textField.text = textField.text! + "+addText"
     }
 

@@ -60,18 +60,13 @@ class CustomTextView: UITextView {
     }
     
     //  TextViewのTextが変更された時に呼ばれる
-    func controlPlaceholder(_ notification: NSNotification) {
-        print("UITextViewTextDidChange!")
+    @objc private func controlPlaceholder(_ notification: NSNotification) {
+        print("Notification->UITextViewTextDidChange!")
         placeholderIsHidden()
-        
     }
     
     private func placeholderIsHidden() {
-        if text.isEmpty {
-            placeholderLabel.isHidden = false
-        } else {
-            placeholderLabel.isHidden = true
-        }
+        placeholderLabel.isHidden = !text.isEmpty
     }
     
     override var text: String! {
@@ -84,25 +79,26 @@ class CustomTextView: UITextView {
     override var textAlignment: NSTextAlignment {
         didSet {
             print("didiSet: \(textAlignment)")
+            placeholderLabel.textAlignment = self.textAlignment
         }
     }
     
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        
-        placeholderLabel.frame = rect
-        placeholderLabel.text = placeholder
-        placeholderLabel.font = self.font
-        placeholderLabel.backgroundColor = UIColor.clear
-        placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
-        placeholderLabel.textAlignment = self.textAlignment
-        placeholderLabel.sizeToFit()
-        
-        self.addSubview(placeholderLabel)
-        self.sendSubview(toBack: placeholderLabel)
-        print("Add placeholderLabel as subView")
-    }
+//    // Only override draw() if you perform custom drawing.
+//    // An empty implementation adversely affects performance during animation.
+//    override func draw(_ rect: CGRect) {
+//        super.draw(rect)
+//        
+//        placeholderLabel.frame = rect
+//        placeholderLabel.text = placeholder
+//        placeholderLabel.font = self.font
+//        placeholderLabel.backgroundColor = UIColor.clear
+//        placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
+//        placeholderLabel.textAlignment = self.textAlignment
+//        placeholderLabel.sizeToFit()
+//        
+//        self.addSubview(placeholderLabel)
+//        self.sendSubview(toBack: placeholderLabel)
+//        print("Add placeholderLabel as subView")
+//    }
 
 }

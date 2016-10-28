@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         textView.layer.position = CGPoint(x: posX, y: 100)
         textView.text = "Fist text"
         textView.placeholder = "Placeholder"
+        textView.delegate = self
         
         self.view.addSubview(textView)
     }
@@ -44,6 +45,7 @@ class ViewController: UIViewController {
         textField.text = "Fist text"
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
+        textField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
         
@@ -75,4 +77,29 @@ class ViewController: UIViewController {
     }
 
 }
+
+
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+
+extension ViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        print("Delegate->textViewDidChange")
+    }
+    
+}
+
+
+
+
+
+
 

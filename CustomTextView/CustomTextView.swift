@@ -20,9 +20,43 @@ class CustomTextView: UITextView {
         }
     }
     
-    func drawPlaceholder(in rect: CGRect) {
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+//    override init() {
+//        super.init()
+//    }
+    
+    init(frame: CGRect) {
+        super.init(frame: frame, textContainer: nil)
+        initialize()
+        drawPlaceholder(in: frame)
+    }
+    
+    private func initialize() {
         // 通知を登録する
         NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
+    }
+    
+    func drawPlaceholder(in rect: CGRect) {
+        placeholderLabel.frame = rect
+        //        placeholderLabel.frame.origin = CGPoint.zero
+        placeholderLabel.text = placeholder
+        placeholderLabel.font = self.font
+        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+        placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
+        placeholderLabel.textAlignment = self.textAlignment
+        //        placeholderLabel.textAlignment = .center
+        placeholderLabel.sizeToFit()
+        
+        self.addSubview(placeholderLabel)
+        //        self.sendSubview(toBack: placeholderLabel)
+        print("Add placeholderLabel as subView")
     }
     
     //  TextViewのTextが変更された時に呼ばれる

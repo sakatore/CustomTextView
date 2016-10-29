@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var textView = CustomTextView()
-    var textField = UITextField()
+    var textView: CustomTextView!
+    var textField: UITextField!
     
     let width: CGFloat = 200
     let textViewHeight: CGFloat = 100

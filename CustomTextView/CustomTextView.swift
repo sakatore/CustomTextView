@@ -38,7 +38,7 @@ final class CustomTextView: UITextView {
         drawPlaceholder(in: frame)
     }
     
-    private func initialize() {
+    private func observeTextDidChange() {
         // 通知を登録する
         NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
     }

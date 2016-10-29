@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CustomTextView: UITextView {
+final class CustomTextView: UITextView {
     private let placeholderLabel = UILabel()
     
     // default is nil. string is drawn 70% gray

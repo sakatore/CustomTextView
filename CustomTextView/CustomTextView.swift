@@ -54,7 +54,7 @@ final class CustomTextView: UITextView {
         //        placeholderLabel.textAlignment = .center
         placeholderLabel.sizeToFit()
         
-        self.addSubview(placeholderLabel)
+        addSubview(placeholderLabel)
         //        self.sendSubview(toBack: placeholderLabel)
         print("Add placeholderLabel as subView")
     }

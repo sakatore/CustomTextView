@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         textView.placeholder = "Placeholder"
         textView.delegate = self
         
-        self.view.addSubview(textView)
+        view.addSubview(textView)
     }
     
     func configTextField() {
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
         
-        self.view.addSubview(textField)
+        view.addSubview(textField)
     }
     
     func textFieldTextDidChanged(_ notification: NSNotification) {
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.blue, for: .highlighted)
         button.addTarget(self, action: #selector(ViewController.tapButton(_:)), for: .touchUpInside)
         
-        self.view.addSubview(button)
+        view.addSubview(button)
     }
     
     func tapButton(_ sender: UIButton) {

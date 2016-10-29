@@ -16,7 +16,7 @@ final class CustomTextView: UITextView {
     @IBInspectable var placeholder: String? {
         didSet {
             print("placeholder did set.")
-            drawPlaceholder(in: frame)
+//            drawPlaceholder(in: frame)
         }
     }
     
@@ -34,8 +34,8 @@ final class CustomTextView: UITextView {
     
     init(frame: CGRect) {
         super.init(frame: frame, textContainer: nil)
-        initialize()
-        drawPlaceholder(in: frame)
+        observeTextDidChange()
+        configurePlaceholder(in: frame)
     }
     
     private func observeTextDidChange() {
@@ -43,7 +43,7 @@ final class CustomTextView: UITextView {
         NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
     }
     
-    func drawPlaceholder(in rect: CGRect) {
+    private func configurePlaceholder(in rect: CGRect) {
         placeholderLabel.frame = rect
         //        placeholderLabel.frame.origin = CGPoint.zero
         placeholderLabel.text = placeholder

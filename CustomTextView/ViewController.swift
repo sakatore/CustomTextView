@@ -23,15 +23,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configTextView()
-        configTextField()
-        configButton()
+        configureTextView()
+        configureTextField()
+        configureButton()
         
     }
     
-    func configTextView() {
+    func configureTextView() {
         textView.frame.size = CGSize(width: width, height: textViewHeight)
-        textView.layer.position = CGPoint(x: posX, y: 100)
+        textView.layer.position = CGPoint(x: centerPositionX, y: 100)
         textView.text = "Fist text"
         textView.placeholder = "Placeholder"
         textView.delegate = self
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         view.addSubview(textView)
     }
     
-    func configTextField() {
+    func configureTextField() {
         textField.frame.size = CGSize(width: width, height: textFieldhHeight)
         textField.layer.position = CGPoint(x: centerPositionX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
         textField.text = "Fist text"
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         print("Notification->UITextFieldTextDidChange!")
     }
     
-    func configButton() {
+    func configureButton() {
         let button = UIButton(type: .system)
         button.frame.size = CGSize(width: width, height: buttonHeight)
         button.layer.position = CGPoint(x: centerPositionX, y: textField.layer.position.y + textFieldhHeight / 2 + buttonHeight / 2)

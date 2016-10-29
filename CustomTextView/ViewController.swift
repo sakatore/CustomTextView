@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.red, for: .normal)
         button.setTitle("Pushed", for: .highlighted)
         button.setTitleColor(UIColor.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(ViewController.tapButton(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
         
         view.addSubview(button)
     }

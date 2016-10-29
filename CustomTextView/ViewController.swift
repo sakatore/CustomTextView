@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         print("TapButton!")
         textView.text = textView.text + "+addText"
 //        textView.textAlignment = .center
-        textField.text = textField.text! + "+addText"
+        textField.text = textField.text ?? "" + "+addText"
     }
 
 }

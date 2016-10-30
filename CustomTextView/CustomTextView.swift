@@ -46,10 +46,10 @@ final class CustomTextView: UITextView {
         placeholderLabel.frame = rect
 //        placeholderLabel.frame.origin = CGPoint.zero
         placeholderLabel.text = placeholder
-        placeholderLabel.font = self.font
+        placeholderLabel.font = font
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
-        placeholderLabel.textAlignment = self.textAlignment
+        placeholderLabel.textAlignment = textAlignment
 //        placeholderLabel.textAlignment = .center
         placeholderLabel.sizeToFit()
         

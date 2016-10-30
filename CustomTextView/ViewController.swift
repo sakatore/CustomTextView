@@ -42,7 +42,10 @@ class ViewController: UIViewController {
     private func configureTextField() {
         textField.frame.size = CGSize(width: width, height: textFieldhHeight)
         textField.layer.position = CGPoint(x: centerPositionX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
+        textView.layer.borderColor = UIColor.black.cgColor
+        textView.layer.borderWidth = 1
         textField.text = "Fist text"
+        textView.font = .systemFont(ofSize: 22.0)
         textField.placeholder = "Placeholder"
         textField.borderStyle = .line
         textField.delegate = self

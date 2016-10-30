@@ -25,12 +25,12 @@ final class CustomTextView: UITextView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-//    override init() {
-//        super.init()
-//    }
+    init() {
+        super.init(frame: .null, textContainer: nil)
+    }
     
     init(frame: CGRect) {
         super.init(frame: frame, textContainer: nil)

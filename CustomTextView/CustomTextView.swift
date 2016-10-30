@@ -10,6 +10,9 @@ import UIKit
 
 @IBDesignable
 final class CustomTextView: UITextView {
+    
+    // MARK: - placeholer
+    
     private let placeholderLabel = UILabel()
     
     // default is nil. string is drawn 70% gray
@@ -18,6 +21,8 @@ final class CustomTextView: UITextView {
             print("placeholder did set.")
         }
     }
+    
+    // MARK: - initializers
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -36,6 +41,9 @@ final class CustomTextView: UITextView {
         observeTextDidChange()
         configurePlaceholder(in: frame)
     }
+    
+    
+    // MARK: - private methods
     
     private func observeTextDidChange() {
         // 通知を登録する
@@ -67,6 +75,9 @@ final class CustomTextView: UITextView {
     private func placeholderIsHidden() {
         placeholderLabel.isHidden = !text.isEmpty
     }
+    
+    
+    // MARK: - override properties
     
     override var text: String! {
         didSet {

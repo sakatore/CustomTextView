@@ -16,7 +16,6 @@ final class CustomTextView: UITextView {
     @IBInspectable var placeholder: String? {
         didSet {
             print("placeholder did set.")
-//            drawPlaceholder(in: frame)
         }
     }
     
@@ -45,17 +44,17 @@ final class CustomTextView: UITextView {
     
     private func configurePlaceholder(in rect: CGRect) {
         placeholderLabel.frame = rect
-        //        placeholderLabel.frame.origin = CGPoint.zero
+//        placeholderLabel.frame.origin = CGPoint.zero
         placeholderLabel.text = placeholder
         placeholderLabel.font = self.font
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
         placeholderLabel.textAlignment = self.textAlignment
-        //        placeholderLabel.textAlignment = .center
+//        placeholderLabel.textAlignment = .center
         placeholderLabel.sizeToFit()
         
         addSubview(placeholderLabel)
-        //        self.sendSubview(toBack: placeholderLabel)
+//        self.sendSubview(toBack: placeholderLabel)
         print("Add placeholderLabel as subView")
     }
     
@@ -83,22 +82,12 @@ final class CustomTextView: UITextView {
         }
     }
     
-//    // Only override draw() if you perform custom drawing.
-//    // An empty implementation adversely affects performance during animation.
-//    override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-//        
-//        placeholderLabel.frame = rect
-//        placeholderLabel.text = placeholder
-//        placeholderLabel.font = self.font
-//        placeholderLabel.backgroundColor = UIColor.clear
-//        placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
-//        placeholderLabel.textAlignment = self.textAlignment
-//        placeholderLabel.sizeToFit()
-//        
-//        self.addSubview(placeholderLabel)
-//        self.sendSubview(toBack: placeholderLabel)
-//        print("Add placeholderLabel as subView")
-//    }
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
 
 }

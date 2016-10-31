@@ -35,6 +35,8 @@ final class CustomTextView: UITextView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        observeTextDidChange()
+        configurePlaceholder()
     }
     
     deinit {

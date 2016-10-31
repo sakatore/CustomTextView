@@ -30,7 +30,7 @@ final class CustomTextView: UITextView {
     init(frame: CGRect) {
         super.init(frame: frame, textContainer: nil)
         observeTextDidChange()
-        initPlaceholder()
+        configurePlaceholder()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,7 +50,7 @@ final class CustomTextView: UITextView {
     }
     
     // Placeholerの初期化設定(1回のみ)
-    private func initPlaceholder() {
+    private func configurePlaceholder() {
         placeholderLabel.frame = frame
         self.textContainerInset = UIEdgeInsetsMake(5, 5, 5, 5)
         placeholderLabel.frame.origin = CGPoint(x: 8, y: 5)

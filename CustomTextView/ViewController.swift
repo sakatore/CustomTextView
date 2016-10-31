@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     private func configureTextView() {
         textView.frame.size = CGSize(width: width, height: textViewHeight)
-        textView.layer.position = CGPoint(x: centerPositionX, y: 100)
+        textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
         textView.text = "Fist text"
         textView.placeholder = "Placeholder"
         textView.delegate = self
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     
     private func configureTextField() {
         textField.frame.size = CGSize(width: width, height: textFieldhHeight)
-        textField.layer.position = CGPoint(x: centerPositionX, y: 100 + textViewHeight / 2 + textViewHeight / 2)
+        textField.frame.origin = CGPoint(x: centerPositionX - width / 2, y: textView.frame.origin.y + textViewHeight)
         textView.layer.borderColor = UIColor.black.cgColor
         textView.layer.borderWidth = 1
         textField.text = "Fist text"
@@ -60,9 +60,9 @@ class ViewController: UIViewController {
     }
     
     private func configureButton() {
-        let button = UIButton(type: .system)
-        button.frame.size = CGSize(width: width, height: buttonHeight)
-        button.layer.position = CGPoint(x: centerPositionX, y: textField.layer.position.y + textFieldhHeight / 2 + buttonHeight / 2)
+        let size = CGSize(width: width, height: buttonHeight)
+        let point = CGPoint(x: centerPositionX - width / 2, y: textField.frame.origin.y + textFieldhHeight)
+        let button = UIButton(frame: CGRect(origin: point, size: size))
         button.setTitle("Button", for: .normal)
         button.setTitleColor(UIColor.red, for: .normal)
         button.setTitle("Pushed", for: .highlighted)

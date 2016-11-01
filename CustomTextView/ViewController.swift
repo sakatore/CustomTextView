@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     private var textView = CustomTextView(frame: .zero)
     private var textField = UITextField(frame: .zero)
     
-    private let width: CGFloat = 200
-    private let textViewHeight: CGFloat = 100
+    private let width: CGFloat = 300
+    private let textViewHeight: CGFloat = 300
     private let textFieldhHeight: CGFloat = 50
     private let buttonHeight: CGFloat = 50
     private var centerPositionX: CGFloat { return self.view.frame.width / 2}
@@ -33,7 +33,8 @@ class ViewController: UIViewController {
         textView.frame.size = CGSize(width: width, height: textViewHeight)
         textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
         textView.text = "Fist text"
-        textView.placeholder = "Placeholder"
+        textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
+//        textView.textAlignment = .center
         textView.delegate = self
         
         view.addSubview(textView)
@@ -74,8 +75,14 @@ class ViewController: UIViewController {
     
     @objc private func tapButton(_ sender: UIButton) {
         print("TapButton!")
-        textView.text = textView.text + "+addText"
-        textField.text = textField.text ?? "" + "+addText"
+        // textを追加
+//        textView.text = textView.text + "+addText"
+//        textField.text = textField.text ?? "" + "+addText"
+        
+        // textSizeを変更
+        if let text = textField.text, let size = Int(text) {
+            textView.font = .systemFont(ofSize: CGFloat(size))
+        }
     }
 
 }

@@ -20,15 +20,20 @@ final class CustomTextView: UITextView {
         didSet {
             print("placeholder did set.")
             placeholderLabel.text = placeholder
+            
+            // 表示可能最大行数を指定(0 -> 行数は可変)
+            placeholderLabel.numberOfLines = 0
             placeholderLabel.sizeToFit()
+            // 単語の途中で改行されないようにする
+            placeholderLabel.lineBreakMode = .byWordWrapping
         }
     }
     
     
     // MARK: - initializers
     
-    init(frame: CGRect) {
-        super.init(frame: frame, textContainer: nil)
+    override init(frame: CGRect, textContainer: NSTextContainer? = nil) {
+        super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
     }
@@ -53,20 +58,20 @@ final class CustomTextView: UITextView {
     
     // Placeholerの初期化設定(1回のみ)
     private func configurePlaceholder() {
-        placeholderLabel.frame = frame
-        self.textContainerInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-        placeholderLabel.frame.origin = CGPoint(x: 8, y: 5)
         // default is clear
-        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+        placeholderLabel.backgroundColor = UIColor.clear
+//        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
         
+        // 変更され次第更新するもの
         placeholderLabel.font = font
-        print(placeholderLabel.font.pointSize)
         placeholderLabel.textAlignment = textAlignment
+        // default is (8, 0, 8, 0)
+        self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         self.addSubview(placeholderLabel)
-        //        self.sendSubview(toBack: placeholderLabel)
+//        self.sendSubview(toBack: placeholderLabel)
         print("Add placeholderLabel as subView")
     }
     
@@ -101,6 +106,19 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(font)")
             placeholderLabel.font = font
+            placeholderLabel.frame.size.width = textContainer.size.width - 4
+            print(textContainer.size)
+            placeholderLabel.sizeToFit()
+        }
+    }
+    
+    override var textContainerInset: UIEdgeInsets {
+        didSet {
+            print("didiSet: \(textContainerInset)")
+            placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + 2, y: textContainerInset.top)
+            
+            print(self.frame)
+//            print(placeholderLabel.textRect(forBounds: self.frame, limitedToNumberOfLines: 4))
         }
     }
     

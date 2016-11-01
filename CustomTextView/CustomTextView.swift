@@ -106,6 +106,8 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(font)")
             placeholderLabel.font = font
+            placeholderLabel.frame.size.width = textContainer.size.width - 4
+            print(textContainer.size)
             placeholderLabel.sizeToFit()
         }
     }

@@ -59,19 +59,19 @@ final class CustomTextView: UITextView {
     // Placeholerの初期化設定(1回のみ)
     private func configurePlaceholder() {
         // default is clear
-        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+        placeholderLabel.backgroundColor = UIColor.clear
+//        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
         
         // 変更され次第更新するもの
         placeholderLabel.font = font
-        print(placeholderLabel.font.pointSize)
         placeholderLabel.textAlignment = textAlignment
         // default is (8, 0, 8, 0)
         self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         self.addSubview(placeholderLabel)
-        //        self.sendSubview(toBack: placeholderLabel)
+//        self.sendSubview(toBack: placeholderLabel)
         print("Add placeholderLabel as subView")
     }
     
@@ -118,7 +118,7 @@ final class CustomTextView: UITextView {
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + 2, y: textContainerInset.top)
             
             print(self.frame)
-            print(placeholderLabel.textRect(forBounds: self.frame, limitedToNumberOfLines: 4))
+//            print(placeholderLabel.textRect(forBounds: self.frame, limitedToNumberOfLines: 4))
         }
     }
     

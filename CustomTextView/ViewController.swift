@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
         textView.text = "Fist text"
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
+//        textView.textAlignment = .center
         textView.delegate = self
         
         view.addSubview(textView)

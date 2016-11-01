@@ -36,12 +36,14 @@ final class CustomTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
+        configureAccessoryBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         observeTextDidChange()
         configurePlaceholder()
+        configureAccessoryBar()
     }
     
     deinit {
@@ -129,5 +131,25 @@ final class CustomTextView: UITextView {
      // Drawing code
      }
      */
+    
+    
+    // MARK: - accessoryBar
+    
+    private let accessoryBar = UIToolbar()
+    
+    private func configureAccessoryBar() {
+        accessoryBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidPush(_:)))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        accessoryBar.setItems([spacer, doneButton], animated: true)
+        
+        // ツールバーをtextViewのアクセサリViewに設定する
+        self.inputAccessoryView = accessoryBar
+    }
+    
+    @objc private func doneButtonDidPush(_ sender: UIButton) {
+        // キーボードを閉じる
+        self.resignFirstResponder()
+    }
 
 }

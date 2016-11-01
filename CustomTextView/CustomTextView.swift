@@ -32,8 +32,8 @@ final class CustomTextView: UITextView {
     
     // MARK: - initializers
     
-    init(frame: CGRect) {
-        super.init(frame: frame, textContainer: nil)
+    override init(frame: CGRect, textContainer: NSTextContainer? = nil) {
+        super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
     }

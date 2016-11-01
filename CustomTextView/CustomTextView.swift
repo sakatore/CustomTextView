@@ -133,7 +133,7 @@ final class CustomTextView: UITextView {
      */
     
     
-    // MARK: - accessoryBar
+    // MARK: - accessoryView
     
     private let accessoryView = UIToolbar()
     
@@ -147,9 +147,39 @@ final class CustomTextView: UITextView {
         self.inputAccessoryView = accessoryView
     }
     
+    var customDelegate: CustomTextViewDelegate?
+    
     @objc private func doneButtonDidPush(_ sender: UIButton) {
+        // delegateの処理を行う
+        if let _ = customDelegate?.customTextViewShouldDone(self) {}
         // キーボードを閉じる
         self.resignFirstResponder()
     }
 
 }
+
+
+protocol CustomTextViewDelegate: UITextViewDelegate {
+    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool
+}
+
+extension CustomTextViewDelegate {
+    // defaultの挙動
+    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
+        return true
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

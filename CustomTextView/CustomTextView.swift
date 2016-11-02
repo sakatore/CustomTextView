@@ -137,14 +137,22 @@ final class CustomTextView: UITextView {
     
     private let accessoryView = UIToolbar()
     
+    private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
+    
+    var buttonTitle: String = "Done" {
+        didSet {
+            doneButton.title = buttonTitle
+        }
+    }
+    
     private func configureAccessoryView() {
-        accessoryView.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidPush(_:)))
+        doneButton.title = buttonTitle
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         accessoryView.setItems([spacer, doneButton], animated: true)
         
         // ツールバーをtextViewのアクセサリViewに設定する
         self.inputAccessoryView = accessoryView
+        accessoryView.sizeToFit()
     }
     
     var customDelegate: CustomTextViewDelegate?

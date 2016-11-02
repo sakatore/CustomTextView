@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         
         textView.delegate = self
         textView.customDelegate = self
+        textView.buttonTitle = "Hello"
         
         view.addSubview(textView)
     }

@@ -69,12 +69,10 @@ final class CustomTextView: UITextView {
         // 変更され次第更新するもの
         placeholderLabel.font = font
         placeholderLabel.textAlignment = textAlignment
-        // default is (8, 0, 8, 0)
+        // textContainerInsetのdidSetを想起させる -> default is (8, 0, 8, 0)
         self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         self.addSubview(placeholderLabel)
-//        self.sendSubview(toBack: placeholderLabel)
-        print("Add placeholderLabel as subView")
     }
     
     //  TextViewのTextが変更された時に呼ばれる
@@ -109,7 +107,6 @@ final class CustomTextView: UITextView {
             print("didiSet: \(font)")
             placeholderLabel.font = font
             placeholderLabel.frame.size.width = textContainer.size.width - 4
-            print(textContainer.size)
             placeholderLabel.sizeToFit()
         }
     }
@@ -118,20 +115,8 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(textContainerInset)")
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + 2, y: textContainerInset.top)
-            
-            print(self.frame)
-//            print(placeholderLabel.textRect(forBounds: self.frame, limitedToNumberOfLines: 4))
         }
     }
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
-    
     
     // MARK: - accessoryView
     
@@ -154,6 +139,9 @@ final class CustomTextView: UITextView {
         self.inputAccessoryView = accessoryView
         accessoryView.sizeToFit()
     }
+    
+    
+    // MARK: - delegate
     
     var customDelegate: CustomTextViewDelegate?
     

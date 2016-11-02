@@ -45,15 +45,17 @@ final class CustomTextView: UITextView {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self)
+        notificatin.removeObserver(self)
     }
     
     
     // MARK: - private methods
     
+    private let notificatin = NotificationCenter.default
+    
     private func observeTextDidChange() {
         // 通知を登録する
-        NotificationCenter.default.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
+        notificatin.addObserver(self, selector: #selector(controlPlaceholder(_:)), name: .UITextViewTextDidChange, object: nil)
     }
     
     // Placeholerの初期化設定(1回のみ)

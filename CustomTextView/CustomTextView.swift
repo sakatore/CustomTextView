@@ -36,14 +36,14 @@ final class CustomTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
-        configureAccessoryBar()
+        configureAccessoryView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         observeTextDidChange()
         configurePlaceholder()
-        configureAccessoryBar()
+        configureAccessoryView()
     }
     
     deinit {
@@ -61,8 +61,8 @@ final class CustomTextView: UITextView {
     // Placeholerの初期化設定(1回のみ)
     private func configurePlaceholder() {
         // default is clear
-        placeholderLabel.backgroundColor = UIColor.clear
-//        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+//        placeholderLabel.backgroundColor = UIColor.clear
+        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
         
@@ -137,7 +137,7 @@ final class CustomTextView: UITextView {
     
     private let accessoryView = UIToolbar()
     
-    private func configureAccessoryBar() {
+    private func configureAccessoryView() {
         accessoryView.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidPush(_:)))
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

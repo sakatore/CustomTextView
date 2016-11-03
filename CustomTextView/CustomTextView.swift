@@ -20,12 +20,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("placeholder did set.")
             placeholderLabel.text = placeholder
-            
-            // 表示可能最大行数を指定(0 -> 行数は可変)
-            placeholderLabel.numberOfLines = 0
             placeholderLabel.sizeToFit()
-            // 単語の途中で改行されないようにする
-            placeholderLabel.lineBreakMode = .byWordWrapping
         }
     }
     
@@ -63,6 +58,10 @@ final class CustomTextView: UITextView {
 //        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
+        // 表示可能最大行数を指定(0 -> 行数は可変)
+        placeholderLabel.numberOfLines = 0
+        // 単語の途中で改行されないようにする
+        placeholderLabel.lineBreakMode = .byWordWrapping
         
         // 変更され次第更新するもの
         placeholderLabel.font = font

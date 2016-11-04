@@ -133,7 +133,7 @@ final class CustomTextView: UITextView {
     private func configureAccessoryView() {
         doneButton.title = buttonTitle
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        accessoryView.setItems([spacer, doneButton], animated: true)
+        accessoryView.setItems([spacer, doneButton], animated: false)
         
         // ツールバーをtextViewのアクセサリViewに設定する
         self.inputAccessoryView = accessoryView

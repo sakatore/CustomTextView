@@ -77,7 +77,7 @@ final class CustomTextView: UITextView {
     
     //  TextViewのTextが変更された時に呼ばれる
     @objc private func controlPlaceholder(_ notification: NSNotification) {
-        print("Notification->UITextViewTextDidChange!")
+//        print("Notification->UITextViewTextDidChange!")
         placeholderIsHidden()
     }
     

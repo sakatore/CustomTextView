@@ -119,7 +119,7 @@ extension ViewController: CustomTextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        print("Delegate->textViewDidChange")
+        print("Delegate->customTextViewDidChange")
     }
     
 }

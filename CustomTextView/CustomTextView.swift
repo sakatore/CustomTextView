@@ -143,13 +143,17 @@ final class CustomTextView: UITextView {
     
     // MARK: - delegate
     
-    var customDelegate: CustomTextViewDelegate?
+    var customDelegate: CustomTextViewDelegate? {
+        didSet {
+            delegate = customDelegate
+        }
+    }
     
     @objc private func doneButtonDidPush(_ sender: UIButton) {
-        // delegateの処理を行う
-        if let _ = customDelegate?.customTextViewShouldDone(self) {}
-        // キーボードを閉じる
-        self.resignFirstResponder()
+        if customDelegate?.customTextViewShouldDone(self) != false {
+            // キーボードを閉じる
+            self.resignFirstResponder()
+        }
     }
 
 }

@@ -36,7 +36,6 @@ class ViewController: UIViewController {
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
 //        textView.textAlignment = .center
         
-        textView.delegate = self
         textView.customDelegate = self
         textView.buttonTitle = "Hello"
         

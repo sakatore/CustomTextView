@@ -159,13 +159,6 @@ protocol CustomTextViewDelegate: UITextViewDelegate {
     func customTextViewShouldDone(_ textView: CustomTextView) -> Bool
 }
 
-extension CustomTextViewDelegate {
-    // defaultの挙動
-    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
-        return true
-    }
-}
-
 
 
 

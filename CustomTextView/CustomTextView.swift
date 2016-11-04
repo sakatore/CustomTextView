@@ -130,6 +130,13 @@ final class CustomTextView: UITextView {
         }
     }
     
+    // defaultではaccessoryViewを表示
+    var accessoryViewIsHidden = false {
+        didSet {
+            accessoryView.isHidden = accessoryViewIsHidden
+        }
+    }
+    
     private func configureAccessoryView() {
         doneButton.title = buttonTitle
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

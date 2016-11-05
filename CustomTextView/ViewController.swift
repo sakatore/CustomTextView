@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         textView.customDelegate = self
         textView.buttonTitle = "Hello"
-        textView.accessoryViewIsHidden = true
+//        textView.accessoryViewIsHidden = true
         
         view.addSubview(textView)
     }

@@ -145,6 +145,7 @@ final class CustomTextView: UITextView {
         // ツールバーをtextViewのアクセサリViewに設定する
         self.inputAccessoryView = accessoryView
         accessoryView.sizeToFit()
+        accessoryView.isHidden = accessoryViewIsHidden
     }
     
     

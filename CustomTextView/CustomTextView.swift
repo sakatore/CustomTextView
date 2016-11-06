@@ -24,6 +24,9 @@ final class CustomTextView: UITextView {
         }
     }
     
+    // adjust label position
+    private let paddingLeft: CGFloat = 2
+    
     
     // MARK: - initializers
     
@@ -107,7 +110,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(font)")
             placeholderLabel.font = font
-            placeholderLabel.frame.size.width = textContainer.size.width - 4
+            placeholderLabel.frame.size.width = textContainer.size.width - paddingLeft * 2
             placeholderLabel.sizeToFit()
         }
     }
@@ -115,7 +118,7 @@ final class CustomTextView: UITextView {
     override var textContainerInset: UIEdgeInsets {
         didSet {
             print("didiSet: \(textContainerInset)")
-            placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + 2, y: textContainerInset.top)
+            placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
         }
     }
     

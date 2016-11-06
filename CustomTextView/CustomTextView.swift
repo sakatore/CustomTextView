@@ -133,6 +133,12 @@ final class CustomTextView: UITextView {
         }
     }
     
+    var buttonFont: UIFont? {
+        didSet {
+            doneButton.setTitleTextAttributes([NSFontAttributeName: buttonFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)], for: .normal)
+        }
+    }
+    
     var buttonColor: UIColor? {
         didSet {
             doneButton.setTitleTextAttributes([NSForegroundColorAttributeName: buttonColor ?? UIColor.black], for: .normal)

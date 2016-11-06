@@ -42,6 +42,7 @@ class ViewController: UIViewController {
 //        textView.accessoryViewIsHidden = true
         textView.accessoryViewStyle = .blackOpaque
         textView.buttonColor = UIColor.yellow
+        textView.buttonFont = UIFont.italicSystemFont(ofSize: 20)
         
         view.addSubview(textView)
     }

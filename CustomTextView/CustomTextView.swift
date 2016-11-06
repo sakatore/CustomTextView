@@ -74,7 +74,6 @@ final class CustomTextView: UITextView {
         placeholderLabel.font = font
         placeholderLabel.textAlignment = textAlignment
         placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
-        placeholderLabel.sizeToFit()
         
         self.addSubview(placeholderLabel)
     }
@@ -131,6 +130,12 @@ final class CustomTextView: UITextView {
     var buttonTitle: String = "Done" {
         didSet {
             doneButton.title = buttonTitle
+        }
+    }
+    
+    var buttonColor: UIColor? {
+        didSet {
+            doneButton.setTitleTextAttributes([NSForegroundColorAttributeName: buttonColor ?? UIColor.black], for: .normal)
         }
     }
     

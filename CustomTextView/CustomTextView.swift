@@ -73,8 +73,8 @@ final class CustomTextView: UITextView {
         // 変更され次第更新するもの
         placeholderLabel.font = font
         placeholderLabel.textAlignment = textAlignment
-        // textContainerInsetのdidSetを想起させる -> default is (8, 0, 8, 0)
-        self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
+        placeholderLabel.sizeToFit()
         
         self.addSubview(placeholderLabel)
     }

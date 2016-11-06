@@ -127,27 +127,27 @@ final class CustomTextView: UITextView {
     
     private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
     
-    var barItemTitle: String = "Done" {
+    @IBInspectable var barItemTitle: String = "Done" {
         didSet {
             doneButton.title = barItemTitle
         }
     }
     
-    var barItemTitleFont: UIFont = .systemFont(ofSize: UIFont.buttonFontSize) {
+    @IBInspectable var barItemTitleFont: UIFont = .systemFont(ofSize: UIFont.buttonFontSize) {
         didSet {
             doneButton.setTitleTextAttributes([
                 NSFontAttributeName: barItemTitleFont, NSForegroundColorAttributeName: barItemTitleColor], for: .normal)
         }
     }
     
-    var barItemTitleColor: UIColor = UIColor.black {
+    @IBInspectable var barItemTitleColor: UIColor = UIColor.black {
         didSet {
             doneButton.setTitleTextAttributes([
                 NSForegroundColorAttributeName: barItemTitleColor, NSFontAttributeName: barItemTitleFont], for: .normal)
         }
     }
     
-    var accessoryViewStyle: UIBarStyle = .default {
+    @IBInspectable var accessoryViewStyle: UIBarStyle = .default {
         didSet {
             accessoryView.barStyle = accessoryViewStyle
         }

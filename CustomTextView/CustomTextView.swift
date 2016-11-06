@@ -127,25 +127,25 @@ final class CustomTextView: UITextView {
     
     private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
     
-    var buttonTitle: String = "Done" {
+    var barItemTitle: String = "Done" {
         didSet {
-            doneButton.title = buttonTitle
+            doneButton.title = barItemTitle
         }
     }
     
-    var buttonFont: UIFont? {
+    var barItemTitleFont: UIFont? {
         didSet {
             doneButton.setTitleTextAttributes([
-                NSFontAttributeName: buttonFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize),
-                NSForegroundColorAttributeName: buttonColor ?? UIColor.black], for: .normal)
+                NSFontAttributeName: barItemTitleFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize),
+                NSForegroundColorAttributeName: barItemTitleColor ?? UIColor.black], for: .normal)
         }
     }
     
-    var buttonColor: UIColor? {
+    var barItemTitleColor: UIColor? {
         didSet {
             doneButton.setTitleTextAttributes([
-                NSForegroundColorAttributeName: buttonColor ?? UIColor.black,
-                NSFontAttributeName: buttonFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)], for: .normal)
+                NSForegroundColorAttributeName: barItemTitleColor ?? UIColor.black,
+                NSFontAttributeName: barItemTitleFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)], for: .normal)
         }
     }
     
@@ -163,7 +163,7 @@ final class CustomTextView: UITextView {
     }
     
     private func configureAccessoryView() {
-        doneButton.title = buttonTitle
+        doneButton.title = barItemTitle
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         accessoryView.setItems([spacer, doneButton], animated: false)
         

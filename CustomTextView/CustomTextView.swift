@@ -20,7 +20,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("placeholder did set.")
             placeholderLabel.text = placeholder
-            placeholderLabel.sizeToFit()
+            adjustLabelToFit()
         }
     }
     
@@ -71,7 +71,7 @@ final class CustomTextView: UITextView {
         placeholderLabel.lineBreakMode = .byWordWrapping
         
         // 変更され次第更新するもの
-        placeholderLabel.font = font
+        placeholderLabel.font = font ?? .systemFont(ofSize: 14)
         placeholderLabel.textAlignment = textAlignment
         placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
         
@@ -88,6 +88,11 @@ final class CustomTextView: UITextView {
         placeholderLabel.isHidden = !text.isEmpty
     }
     
+    // text領域が変更された時に調整を行う
+    private func adjustLabelToFit() {
+        placeholderLabel.frame.size.width = textContainer.size.width - paddingLeft * 2
+        placeholderLabel.sizeToFit()
+    }
     
     // MARK: - override properties
     
@@ -109,8 +114,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(font)")
             placeholderLabel.font = font
-            placeholderLabel.frame.size.width = textContainer.size.width - paddingLeft * 2
-            placeholderLabel.sizeToFit()
+            adjustLabelToFit()
         }
     }
     
@@ -133,7 +137,7 @@ final class CustomTextView: UITextView {
         }
     }
     
-    @IBInspectable var barItemTitleFont: UIFont = .systemFont(ofSize: UIFont.buttonFontSize) {
+    var barItemTitleFont: UIFont = .systemFont(ofSize: UIFont.buttonFontSize) {
         didSet {
             doneButton.setTitleTextAttributes([
                 NSFontAttributeName: barItemTitleFont, NSForegroundColorAttributeName: barItemTitleColor], for: .normal)
@@ -147,14 +151,14 @@ final class CustomTextView: UITextView {
         }
     }
     
-    @IBInspectable var accessoryViewStyle: UIBarStyle = .default {
+    var accessoryViewStyle: UIBarStyle = .default {
         didSet {
             accessoryView.barStyle = accessoryViewStyle
         }
     }
     
     // defaultではaccessoryViewを表示
-    var accessoryViewIsHidden = false {
+    @IBInspectable var accessoryViewIsHidden: Bool = false {
         didSet {
             accessoryView.isHidden = accessoryViewIsHidden
         }

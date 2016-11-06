@@ -35,7 +35,10 @@ class ViewController: UIViewController {
         textView.text = "Fist text"
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
 //        textView.textAlignment = .center
-        textView.delegate = self
+        
+        textView.customDelegate = self
+        textView.buttonTitle = "Hello"
+//        textView.accessoryViewIsHidden = true
         
         view.addSubview(textView)
     }
@@ -88,6 +91,8 @@ class ViewController: UIViewController {
 }
 
 
+// MARK: - delegate methods
+
 extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -98,10 +103,24 @@ extension ViewController: UITextFieldDelegate {
 }
 
 
-extension ViewController: UITextViewDelegate {
+//extension ViewController: UITextViewDelegate {
+//    
+//    func textViewDidChange(_ textView: UITextView) {
+//        print("Delegate->textViewDidChange")
+//    }
+//    
+//}
+
+
+extension ViewController: CustomTextViewDelegate {
+    
+    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
+        print("Delegate->customTextViewShouldDone")
+        return true
+    }
     
     func textViewDidChange(_ textView: UITextView) {
-        print("Delegate->textViewDidChange")
+        print("Delegate->customTextViewDidChange")
     }
     
 }

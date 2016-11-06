@@ -31,12 +31,14 @@ final class CustomTextView: UITextView {
         super.init(frame: frame, textContainer: textContainer)
         observeTextDidChange()
         configurePlaceholder()
+        configureAccessoryView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         observeTextDidChange()
         configurePlaceholder()
+        configureAccessoryView()
     }
     
     deinit {
@@ -56,8 +58,8 @@ final class CustomTextView: UITextView {
     // Placeholerの初期化設定(1回のみ)
     private func configurePlaceholder() {
         // default is clear
-        placeholderLabel.backgroundColor = UIColor.clear
-//        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
+//        placeholderLabel.backgroundColor = UIColor.clear
+        placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
         // 表示可能最大行数を指定(0 -> 行数は可変)
@@ -68,17 +70,15 @@ final class CustomTextView: UITextView {
         // 変更され次第更新するもの
         placeholderLabel.font = font
         placeholderLabel.textAlignment = textAlignment
-        // default is (8, 0, 8, 0)
+        // textContainerInsetのdidSetを想起させる -> default is (8, 0, 8, 0)
         self.textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         
         self.addSubview(placeholderLabel)
-//        self.sendSubview(toBack: placeholderLabel)
-        print("Add placeholderLabel as subView")
     }
     
     //  TextViewのTextが変更された時に呼ばれる
     @objc private func controlPlaceholder(_ notification: NSNotification) {
-        print("Notification->UITextViewTextDidChange!")
+//        print("Notification->UITextViewTextDidChange!")
         placeholderIsHidden()
     }
     
@@ -108,7 +108,6 @@ final class CustomTextView: UITextView {
             print("didiSet: \(font)")
             placeholderLabel.font = font
             placeholderLabel.frame.size.width = textContainer.size.width - 4
-            print(textContainer.size)
             placeholderLabel.sizeToFit()
         }
     }
@@ -117,18 +116,72 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(textContainerInset)")
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + 2, y: textContainerInset.top)
-            
-            print(self.frame)
-//            print(placeholderLabel.textRect(forBounds: self.frame, limitedToNumberOfLines: 4))
         }
     }
     
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
+    // MARK: - accessoryView
+    
+    private let accessoryView = UIToolbar()
+    
+    private var doneButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: #selector(doneButtonDidPush(_:)))
+    
+    var buttonTitle: String = "Done" {
+        didSet {
+            doneButton.title = buttonTitle
+        }
+    }
+    
+    // defaultではaccessoryViewを表示
+    var accessoryViewIsHidden = false {
+        didSet {
+            accessoryView.isHidden = accessoryViewIsHidden
+        }
+    }
+    
+    private func configureAccessoryView() {
+        doneButton.title = buttonTitle
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        accessoryView.setItems([spacer, doneButton], animated: false)
+        
+        // ツールバーをtextViewのアクセサリViewに設定する
+        self.inputAccessoryView = accessoryView
+        accessoryView.sizeToFit()
+        accessoryView.isHidden = accessoryViewIsHidden
+    }
+    
+    
+    // MARK: - delegate
+    
+    var customDelegate: CustomTextViewDelegate? {
+        didSet {
+            delegate = customDelegate
+        }
+    }
+    
+    @objc private func doneButtonDidPush(_ sender: UIButton) {
+        if customDelegate?.customTextViewShouldDone(self) != false {
+            // キーボードを閉じる
+            self.resignFirstResponder()
+        }
+    }
 
 }
+
+
+protocol CustomTextViewDelegate: UITextViewDelegate {
+    func customTextViewShouldDone(_ textView: CustomTextView) -> Bool
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

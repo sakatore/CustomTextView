@@ -134,6 +134,12 @@ final class CustomTextView: UITextView {
         }
     }
     
+    var accessoryViewStyle: UIBarStyle = .default {
+        didSet {
+            accessoryView.barStyle = accessoryViewStyle
+        }
+    }
+    
     // defaultではaccessoryViewを表示
     var accessoryViewIsHidden = false {
         didSet {
@@ -150,6 +156,7 @@ final class CustomTextView: UITextView {
         self.inputAccessoryView = accessoryView
         accessoryView.sizeToFit()
         accessoryView.isHidden = accessoryViewIsHidden
+        accessoryView.barStyle = accessoryViewStyle
     }
     
     

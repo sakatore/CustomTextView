@@ -35,10 +35,12 @@ class ViewController: UIViewController {
 //        textView.text = "Fist text"
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
 //        textView.textAlignment = .center
+        textView.keyboardAppearance = .dark
         
         textView.customDelegate = self
         textView.buttonTitle = "Hello"
 //        textView.accessoryViewIsHidden = true
+        textView.accessoryViewStyle = .blackOpaque
         
         view.addSubview(textView)
     }

@@ -32,13 +32,17 @@ class ViewController: UIViewController {
     private func configureTextView() {
         textView.frame.size = CGSize(width: width, height: textViewHeight)
         textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
-        textView.text = "Fist text"
+//        textView.text = "Fist text"
         textView.placeholder = "Placeholder is the Placeholder a Placeholder for Placeholder"
 //        textView.textAlignment = .center
+        textView.keyboardAppearance = .dark
         
         textView.customDelegate = self
-        textView.buttonTitle = "Hello"
+        textView.barItemTitle = "Hello"
 //        textView.accessoryViewIsHidden = true
+        textView.accessoryViewStyle = .blackOpaque
+        textView.barItemTitleColor = UIColor.yellow
+        textView.barItemTitleFont = UIFont.italicSystemFont(ofSize: 20)
         
         view.addSubview(textView)
     }

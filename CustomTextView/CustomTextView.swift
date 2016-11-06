@@ -133,19 +133,17 @@ final class CustomTextView: UITextView {
         }
     }
     
-    var barItemTitleFont: UIFont? {
+    var barItemTitleFont: UIFont = .systemFont(ofSize: UIFont.buttonFontSize) {
         didSet {
             doneButton.setTitleTextAttributes([
-                NSFontAttributeName: barItemTitleFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize),
-                NSForegroundColorAttributeName: barItemTitleColor ?? UIColor.black], for: .normal)
+                NSFontAttributeName: barItemTitleFont, NSForegroundColorAttributeName: barItemTitleColor], for: .normal)
         }
     }
     
-    var barItemTitleColor: UIColor? {
+    var barItemTitleColor: UIColor = UIColor.black {
         didSet {
             doneButton.setTitleTextAttributes([
-                NSForegroundColorAttributeName: barItemTitleColor ?? UIColor.black,
-                NSFontAttributeName: barItemTitleFont ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)], for: .normal)
+                NSForegroundColorAttributeName: barItemTitleColor, NSFontAttributeName: barItemTitleFont], for: .normal)
         }
     }
     

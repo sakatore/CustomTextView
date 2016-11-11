@@ -81,6 +81,7 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(textContainerInset)")
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
+//            placeholderLabel.frame.size = CGSize(width: textContainer.size.width - paddingLeft * 2, height: textContainer.size.height)
         }
     }
     

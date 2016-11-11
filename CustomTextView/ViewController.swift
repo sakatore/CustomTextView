@@ -11,13 +11,24 @@ import UIKit
 class ViewController: UIViewController {
     
     private var textView = CustomTextView(frame: .zero)
-    private var textField = UITextField(frame: .zero)
+    private var sizeTextField = UITextField(frame: .zero)
+    private var insetTextField = UITextField(frame: .zero)
+    private var addTextField = UITextField(frame: .zero)
     
     private let width: CGFloat = 300
     private let textViewHeight: CGFloat = 300
     private let textFieldhHeight: CGFloat = 50
     private let buttonHeight: CGFloat = 50
+    
     private var centerPositionX: CGFloat { return self.view.frame.width / 2}
+    private var textViewBottom: CGFloat { return textView.frame.origin.y + textViewHeight }
+    private var textFieldBottom: CGFloat { return textViewBottom + textFieldhHeight }
+    
+    private let textFieldPlaceholder = ["20", "12", "Hello,.."]
+    private let textFieldKeyboardType: [UIKeyboardType] = [.numberPad, .numberPad, .default]
+    
+    private let buttonTitle = ["Change", "Change", "Add"]
+    private let buttonSelector = [#selector(tapSizeButton(_:)), #selector(tapInsetButton(_:)), #selector(tapAddTextButton(_:))]
     
     
     override func viewDidLoad() {
@@ -52,52 +63,55 @@ class ViewController: UIViewController {
     }
     
     private func configureTextField() {
-        textField.frame.size = CGSize(width: width, height: textFieldhHeight)
-        textField.frame.origin = CGPoint(x: centerPositionX - width / 2, y: textView.frame.origin.y + textViewHeight)
-        textField.text = "Fist text"
-        textField.placeholder = "Placeholder"
-        textField.borderStyle = .line
-        textField.delegate = self
+        let textFields = [sizeTextField, insetTextField, addTextField]
+        for index in 0..<textFieldPlaceholder.count {
+            let size = CGSize(width: width / 3, height: textFieldhHeight)
+            let point = CGPoint(x: centerPositionX - width / 2 + size.width * CGFloat(index), y: textViewBottom)
+            textFields[index].frame = CGRect(origin: point, size: size)
+            textFields[index].placeholder = textFieldPlaceholder[index]
+            textFields[index].keyboardType = textFieldKeyboardType[index]
+            textFields[index].textAlignment = .center
+            textFields[index].borderStyle = .line
+            textFields[index].delegate = self
+            view.addSubview(textFields[index])
+        }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textFieldTextDidChanged(_:)), name: .UITextFieldTextDidChange, object: nil)
-        
-        view.addSubview(textField)
-    }
-    
-    @objc private func textFieldTextDidChanged(_ notification: NSNotification) {
-        print("Notification->UITextFieldTextDidChange!")
     }
     
     private func configureButton() {
-        let size = CGSize(width: width, height: buttonHeight)
-        let point = CGPoint(x: centerPositionX - width / 2, y: textField.frame.origin.y + textFieldhHeight)
-        let button = UIButton(frame: CGRect(origin: point, size: size))
-        button.setTitle("Button", for: .normal)
-        button.setTitleColor(UIColor.red, for: .normal)
-        button.setTitle("Pushed", for: .highlighted)
-        button.setTitleColor(UIColor.blue, for: .highlighted)
-        button.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
-        
-        view.addSubview(button)
+        for index in 0..<buttonTitle.count {
+            let size = CGSize(width: width / 3, height: buttonHeight)
+            let point = CGPoint(x: centerPositionX - width / 2 + size.width * CGFloat(index), y: textFieldBottom)
+            let button = UIButton(frame: CGRect(origin: point, size: size))
+            button.setTitle(buttonTitle[index], for: .normal)
+            button.setTitleColor(UIColor.red, for: .normal)
+            button.addTarget(self, action: buttonSelector[index], for: .touchUpInside)
+            view.addSubview(button)
+        }
     }
     
-    @objc private func tapButton(_ sender: UIButton) {
-        print("TapButton!")
-        // textを追加
-//        textView.text = textView.text + "+addText"
-//        textField.text = textField.text ?? "" + "+addText"
-        
+    @objc private func tapSizeButton(_ sender: UIButton) {
         // textSizeを変更
-        if let text = textField.text, let size = Int(text) {
+        if let text = sizeTextField.text, let size = Int(text) {
             textView.font = .systemFont(ofSize: CGFloat(size))
         }
-        
-        // textContainerInsetのtopを変更
-//        if let text = textField.text, let top = Int(text) {
-//            textView.textContainerInset.top = CGFloat(top)
-//        }
     }
-
+    
+    @objc private func tapInsetButton(_ sender: UIButton) {
+        // textContainerInsetを変更
+        if let text = insetTextField.text, let top = Int(text) {
+            textView.textContainerInset.top = CGFloat(top)
+            textView.textContainerInset.left = CGFloat(top)
+        }
+    }
+    
+    @objc private func tapAddTextButton(_ sender: UIButton) {
+        // textを追加
+        if let text = addTextField.text {
+            textView.text = textView.text + text
+        }
+    }
+    
 }
 
 
@@ -112,25 +126,15 @@ extension ViewController: UITextFieldDelegate {
     
 }
 
-
-//extension ViewController: UITextViewDelegate {
-//    
-//    func textViewDidChange(_ textView: UITextView) {
-//        print("Delegate->textViewDidChange")
-//    }
-//    
-//}
-
-
 extension ViewController: CustomTextViewDelegate {
     
     func customTextViewShouldDone(_ textView: CustomTextView) -> Bool {
-        print("Delegate->customTextViewShouldDone")
+//        print("Delegate->customTextViewShouldDone")
         return true
     }
     
     func textViewDidChange(_ textView: UITextView) {
-        print("Delegate->customTextViewDidChange")
+//        print("Delegate->customTextViewDidChange")
     }
     
 }

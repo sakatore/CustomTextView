@@ -101,7 +101,7 @@ class ViewController: UIViewController {
         // textContainerInsetを変更
         if let text = insetTextField.text, let top = Int(text) {
             textView.textContainerInset.top = CGFloat(top)
-            textView.textContainerInset.left = CGFloat(top)
+            textView.textContainerInset.bottom = CGFloat(top)
         }
     }
     

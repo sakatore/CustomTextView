@@ -81,6 +81,15 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(textContainerInset)")
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
+            
+            if oldValue.left != textContainerInset.left {
+                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.left - textContainerInset.left
+            }
+            
+            if oldValue.right != textContainerInset.right {
+                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.right - textContainerInset.right
+            }
+            
 //            placeholderLabel.frame.size = CGSize(width: textContainer.size.width - paddingLeft * 2, height: textContainer.size.height)
         }
     }
@@ -166,7 +175,7 @@ private extension CustomTextView {
     // Placeholerの初期化設定
     func configurePlaceholder() {
         // default is clear
-        //        placeholderLabel.backgroundColor = UIColor.clear
+//        placeholderLabel.backgroundColor = UIColor.clear
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)

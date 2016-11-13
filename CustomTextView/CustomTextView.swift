@@ -103,6 +103,7 @@ final class CustomTextView: UITextView {
     override var frame: CGRect {
         didSet {
             adjustLabelToFit()
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     

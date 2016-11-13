@@ -41,10 +41,12 @@ final class CustomTextView: UITextView {
         configureAccessoryView()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        print("init(coder: aDecoder)")
         observeTextDidChange()
         configurePlaceholder()
+        print("configurePlaceholder()")
         configureAccessoryView()
     }
     
@@ -98,6 +100,12 @@ final class CustomTextView: UITextView {
         }
     }
     
+    override var frame: CGRect {
+        didSet {
+            adjustLabelToFit()
+        }
+    }
+    
     
     // MARK: - public properties -
     
@@ -107,6 +115,7 @@ final class CustomTextView: UITextView {
 //            print("placeholder did set.")
             placeholderLabel.text = placeholder
             adjustLabelToFit()
+            print("adjustLabelToFit()")
             
             contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
@@ -193,6 +202,7 @@ private extension CustomTextView {
         placeholderLabel.font = font ?? .systemFont(ofSize: 12)
         placeholderLabel.textAlignment = textAlignment
         placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
+        placeholderIsHidden()
         
         self.addSubview(placeholderLabel)
     }

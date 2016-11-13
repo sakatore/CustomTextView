@@ -15,6 +15,7 @@
 		7F429C3A1DB0D19E00DE8ED5 /* CustomTextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F429C391DB0D19E00DE8ED5 /* CustomTextViewTests.swift */; };
 		7F429C451DB0D19E00DE8ED5 /* CustomTextViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F429C441DB0D19E00DE8ED5 /* CustomTextViewUITests.swift */; };
 		7F8195C41DBA4BE80046B9B4 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8195C31DBA4BE80046B9B4 /* CustomTextView.swift */; };
+		7FC827761DD8268E00CC266C /* AnotherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC827751DD8268E00CC266C /* AnotherViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7F429C441DB0D19E00DE8ED5 /* CustomTextViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextViewUITests.swift; sourceTree = "<group>"; };
 		7F429C461DB0D19E00DE8ED5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F8195C31DBA4BE80046B9B4 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		7FC827751DD8268E00CC266C /* AnotherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				7F429C241DB0D19E00DE8ED5 /* AppDelegate.swift */,
 				7F429C261DB0D19E00DE8ED5 /* ViewController.swift */,
+				7FC827751DD8268E00CC266C /* AnotherViewController.swift */,
 				7F8195C31DBA4BE80046B9B4 /* CustomTextView.swift */,
 				7F429C281DB0D19E00DE8ED5 /* Main.storyboard */,
 				7F429C2B1DB0D19E00DE8ED5 /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 			files = (
 				7F429C271DB0D19E00DE8ED5 /* ViewController.swift in Sources */,
 				7F429C251DB0D19E00DE8ED5 /* AppDelegate.swift in Sources */,
+				7FC827761DD8268E00CC266C /* AnotherViewController.swift in Sources */,
 				7F8195C41DBA4BE80046B9B4 /* CustomTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

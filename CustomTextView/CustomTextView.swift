@@ -82,15 +82,16 @@ final class CustomTextView: UITextView {
             print("didiSet: \(textContainerInset)")
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
             
-            if oldValue.left != textContainerInset.left {
-                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.left - textContainerInset.left
-            }
+//            if oldValue.left != textContainerInset.left {
+//                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.left - textContainerInset.left
+//            }
+//            
+//            if oldValue.right != textContainerInset.right {
+//                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.right - textContainerInset.right
+//            }
             
-            if oldValue.right != textContainerInset.right {
-                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.right - textContainerInset.right
-            }
+            placeholderLabel.frame.size.width = placeholderLabel.frame.width + (oldValue.left - textContainerInset.left) + (oldValue.right - textContainerInset.right)
             
-//            placeholderLabel.frame.size = CGSize(width: textContainer.size.width - paddingLeft * 2, height: textContainer.size.height)
         }
     }
     

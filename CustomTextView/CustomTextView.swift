@@ -87,6 +87,12 @@ final class CustomTextView: UITextView {
         }
     }
     
+    override var frame: CGRect {
+        didSet {
+            adjustLabelToFit()
+        }
+    }
+    
     
     // MARK: - public properties -
     
@@ -96,6 +102,7 @@ final class CustomTextView: UITextView {
             print("placeholder did set.")
             placeholderLabel.text = placeholder
             adjustLabelToFit()
+            print("adjustLabelToFit()")
         }
     }
     

@@ -41,10 +41,12 @@ final class CustomTextView: UITextView {
         configureAccessoryView()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        print("init(coder: aDecoder)")
         observeTextDidChange()
         configurePlaceholder()
+        print("configurePlaceholder()")
         configureAccessoryView()
     }
     
@@ -166,7 +168,7 @@ private extension CustomTextView {
     // Placeholerの初期化設定
     func configurePlaceholder() {
         // default is clear
-        //        placeholderLabel.backgroundColor = UIColor.clear
+//        placeholderLabel.backgroundColor = UIColor.clear
         placeholderLabel.backgroundColor = UIColor.blue.withAlphaComponent(0.5)
         // default is 70% gray
         placeholderLabel.textColor = UIColor.gray.withAlphaComponent(0.7)
@@ -178,6 +180,7 @@ private extension CustomTextView {
         placeholderLabel.font = font ?? .systemFont(ofSize: 12)
         placeholderLabel.textAlignment = textAlignment
         placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
+        placeholderIsHidden()
         
         self.addSubview(placeholderLabel)
     }

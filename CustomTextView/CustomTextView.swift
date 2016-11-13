@@ -74,6 +74,8 @@ final class CustomTextView: UITextView {
             print("didiSet: \(font)")
             placeholderLabel.font = font
             adjustLabelToFit()
+            
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     
@@ -92,6 +94,7 @@ final class CustomTextView: UITextView {
             
             placeholderLabel.frame.size.width = placeholderLabel.frame.width + (oldValue.left - textContainerInset.left) + (oldValue.right - textContainerInset.right)
             
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     
@@ -101,9 +104,11 @@ final class CustomTextView: UITextView {
     // default is nil. string is drawn 70% gray
     @IBInspectable var placeholder: String? {
         didSet {
-            print("placeholder did set.")
+//            print("placeholder did set.")
             placeholderLabel.text = placeholder
             adjustLabelToFit()
+            
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     

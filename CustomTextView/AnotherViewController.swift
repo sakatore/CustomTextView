@@ -46,8 +46,6 @@ class AnotherViewController: UIViewController {
         textView.frame.origin = CGPoint(x: centerPositionX - width / 2, y: 100)
         textView.layer.borderColor = UIColor.black.cgColor
         textView.layer.borderWidth = 1
-//        textView.font = .systemFont(ofSize: 22.0)
-        textView.keyboardAppearance = .dark
         
         textView.customDelegate = self
         

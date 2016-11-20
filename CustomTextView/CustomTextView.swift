@@ -76,6 +76,8 @@ final class CustomTextView: UITextView {
             print("didiSet: \(font)")
             placeholderLabel.font = font
             adjustLabelToFit()
+            
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     
@@ -83,13 +85,25 @@ final class CustomTextView: UITextView {
         didSet {
             print("didiSet: \(textContainerInset)")
             placeholderLabel.frame.origin = CGPoint(x: textContainerInset.left + paddingLeft, y: textContainerInset.top)
-//            placeholderLabel.frame.size = CGSize(width: textContainer.size.width - paddingLeft * 2, height: textContainer.size.height)
+            
+//            if oldValue.left != textContainerInset.left {
+//                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.left - textContainerInset.left
+//            }
+//            
+//            if oldValue.right != textContainerInset.right {
+//                placeholderLabel.frame.size.width = placeholderLabel.frame.width + oldValue.right - textContainerInset.right
+//            }
+            
+            placeholderLabel.frame.size.width = placeholderLabel.frame.width + (oldValue.left - textContainerInset.left) + (oldValue.right - textContainerInset.right)
+            
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     
     override var frame: CGRect {
         didSet {
             adjustLabelToFit()
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     
@@ -99,10 +113,12 @@ final class CustomTextView: UITextView {
     // default is nil. string is drawn 70% gray
     @IBInspectable var placeholder: String? {
         didSet {
-            print("placeholder did set.")
+//            print("placeholder did set.")
             placeholderLabel.text = placeholder
             adjustLabelToFit()
             print("adjustLabelToFit()")
+            
+            contentSize.height = placeholderLabel.frame.height + textContainerInset.top + textContainerInset.bottom
         }
     }
     
